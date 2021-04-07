@@ -1,0 +1,11 @@
+name: 'Menu cooking'
+description: 'Cook a complete yocto cooker menu'
+inputs:
+  menu:
+    description: 'Menu to cook'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo "cooking : ${{ inputs.menu }}"

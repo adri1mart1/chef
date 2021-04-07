@@ -21,6 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: test
+        uses: ./.github/actions/menu-cook
+
       - name: install requirements
         run: |
           sudo pip3 install .
