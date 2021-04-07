@@ -9,3 +9,4 @@ runs:
   steps:
     - run: |
         echo "cooking : ${{ inputs.menu }}"
+      shell: bash
