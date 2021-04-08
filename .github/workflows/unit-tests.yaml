@@ -21,14 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: test
-        uses: ./.github/menu-cook
-
       - name: install requirements
         run: |
           sudo pip3 install .
 
-      - name: run unit-tests
+      - name: run yocto cooker unit-tests
         run: |
           mkdir test-dir
           cd test-dir
@@ -38,3 +35,10 @@ jobs:
           git config --global user.name "Your Name"
           make
           ctest -V
+
+      - name: cook menus
+        uses: ./.github/menu-cook
+        with:
+          menu: sample-menus/raspberrypi2-zeus-menu.json
+
+
