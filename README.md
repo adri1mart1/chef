@@ -2,7 +2,8 @@
 
 # Yocto Cooker
 
-![unit-tests workflow](https://github.com/cpb-/yocto-cooker/actions/workflows/unit-tests.yaml/badge.svg)
+![unit-tests workflow](https://github.com/adri1mart1/yocto-cooker/actions/workflows/unit-tests.yaml/badge.svg)
+![cook-menus workflow](https://github.com/adri1mart1/yocto-cooker/actions/workflows/cook-menus.yaml/badge.svg)
 
 Meta buildtool for Yocto Project based Linux embedded systems
 

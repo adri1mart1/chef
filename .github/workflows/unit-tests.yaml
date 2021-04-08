@@ -18,21 +18,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        menu:
-          - 'sample-menus/beaglebone-zeus-menu.json'
-          - 'sample-menus/raspberrypi2-zeus-menu.json'
-
     steps:
       - uses: actions/checkout@v2
 
       - name: install requirements
-        run: |
-          sudo pip3 install .
+        run: sudo pip3 install .
 
-      - name: run yocto cooker unit-tests
+      - name: run unit-tests
         run: |
           mkdir test-dir
           cd test-dir
@@ -42,10 +34,3 @@ jobs:
           git config --global user.name "Your Name"
           make
           ctest -V
-
-      - name: cook menus
-        uses: ./.github/menu-cook
-        with:
-          menu: ${{ matrix.menu }}
-
-

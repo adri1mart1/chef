@@ -1,0 +1,46 @@
+name: cook-menus
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - '*.*.*'
+  pull_request:
+    branches:
+      - '*'
+
+  workflow_dispatch:
+
+jobs:
+
+  unit-tests:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        menu:
+          - 'sample-menus/beaglebone-zeus-menu.json'
+          - 'sample-menus/raspberrypi2-zeus-menu.json'
+          - 'sample-menus/pi3-sample-menu.json'
+          - 'sample-menus/qemux86-warrior-menu-short-ssh.json'
+          - 'sample-menus/qemux86-warrior-menu.json'
+          - 'sample-menus/raspberrypi-cm3-warrior-menu.json'
+          - 'sample-menus/raspberrypi2-zeus-menu.json'
+          - 'sample-menus/raspberrypi4-warrior-menu.json'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install requirements
+        run: |
+          sudo pip3 install .
+
+      - name: cook menus
+        uses: ./.github/menu-cook
+        with:
+          menu: ${{ matrix.menu }}
+
+
