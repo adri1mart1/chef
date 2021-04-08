@@ -8,6 +8,8 @@ runs:
   using: "composite"
   steps:
     - run: |
+        # turn the detached message off
+        git config --global advice.detachedHead false
         cooker -v init ${{ inputs.menu }}
         cooker -v update
         cooker -v generate

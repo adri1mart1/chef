@@ -18,6 +18,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        menu:
+          - 'sample-menus/beaglebone-zeus-menu.json'
+          - 'sample-menus/raspberrypi2-zeus-menu.json'
+
     steps:
       - uses: actions/checkout@v2
 
@@ -39,6 +46,6 @@ jobs:
       - name: cook menus
         uses: ./.github/menu-cook
         with:
-          menu: sample-menus/raspberrypi2-zeus-menu.json
+          menu: ${{ matrix.menu }}
 
 
