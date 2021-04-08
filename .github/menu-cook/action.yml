@@ -8,5 +8,9 @@ runs:
   using: "composite"
   steps:
     - run: |
-        echo "cooking : ${{ inputs.menu }}"
+        cooker -v init ${{ inputs.menu }}
+        cooker -v update
+        cooker -v generate
+        # cooker -v build
+
       shell: bash
