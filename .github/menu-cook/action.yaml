@@ -1,9 +1,11 @@
 name: 'Menu cooking'
 description: 'Cook a complete yocto cooker menu'
+
 inputs:
   menu:
     description: 'Menu to cook'
     required: true
+
 runs:
   using: "composite"
   steps:
@@ -13,6 +15,5 @@ runs:
         cooker -v init ${{ inputs.menu }}
         cooker -v update
         cooker -v generate
-        # cooker -v build
-
+        cooker -v build
       shell: bash
